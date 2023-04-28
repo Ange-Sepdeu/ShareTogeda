@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/track-location.css">
     <title>Track Location Details</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <!-- <script src="../js/google-map-api.js"></script> -->
+    <script src="../js/google-map-api.js"></script>
     </head>
 <body>
     <main>

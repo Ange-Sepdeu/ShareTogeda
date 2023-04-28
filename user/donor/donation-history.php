@@ -6,13 +6,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../resources/fontawesome-free-6.3.0-web/css/all.min.css">
     <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../css/history.css">
+    <link rel="stylesheet" href="../css/history-detail.css">
+    <!-- <link rel="stylesheet" href="../css/history.css"> -->
+    <link href="DataTables/datatables.min.css" rel="stylesheet"/>
+
+    
     <title>Donation History</title>
+    <style>
+        table {
+            border: none;
+            width: 80%;
+            align-self: center;
+            background-color: white;
+        }
+        td {
+            padding: 15px;
+            text-align: center;
+        }
+        th {
+            padding: 15px;
+            border-bottom: 5px solid black;
+        }
+        #donation-history {
+            padding: 40px;
+        }
+        #donation-detail {
+            display: none
+        }
+        #donation-history h2 {
+            margin-bottom: 2%;
+            padding: 40px;
+        }
+        .view-detail button {
+            color: white;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            font-weight: 800;
+            letter-spacing: 0.02rem;
+            background-color: #3C59F4;
+            border-radius: 15px;
+        }
+    </style>
 </head>
 <body>
-    <div>
+<div id="donation-detail">
+    <main>
+<div class="top-info">
+            <span id="back-arrow">
+                <i class="fa-regular fa-circle-left"></i>
+            </span>
+            <h1>Donation Detail</h1>
+</div>
+
+        <div id="section-container">
+            <section id="left-side">
+                <h2 id="user-info" class="info">User Info</h2>
+                <div id="user-info-container" class="info-container">
+                    <div id="from" class="detail" title="Donor">
+                        <div class="header purple">
+                            <h5>From</h5>
+                            <i class="fa-regular fa-circle-up"></i>
+                        </div>
+                        <div class="info-detail purple">
+                            <div class="overlay"></div>
+                            <span>ID: <span id="donor-id">1000</span></span>
+                            <hr>
+                            <span>Name: <span id="donor-name">John Doe(You)</span></span>
+                        </div>
+                    </div>
+                    <div id="to" class="detail" title="Receiver">
+                        <div class="header yellow">
+                            <h5>To</h5>
+                            <i class="fa-regular fa-circle-down"></i>
+                        </div>
+                        <div class="info-detail yellow">
+                            <div class="overlay"></div>
+                            <span>ID: <span id="receiver-id">292</span></span>
+                            <hr>
+                            <span>Name: <span id="receiver-name">Mary Ann</span></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="right-side">
+                <div id="item-info-container" class="info-container">
+                    <h2 id="item-info" class="info">Item Info</h2>
+                    <ul class="detail-list">
+                        <li>
+                            <div id="items" class="item-detail">
+                                <div class="title">
+                                    <h5 class="">Food Description</h5>
+                                </div>
+                                <div class="content">
+                                    <span id="foodName">Cornflakes, Milk, Spaghetti</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="status" class="item-detail">
+                                <h5 class="title">Status</h5>
+                                <div class="content">
+                                    <span id="status-content">Pending</span>
+                                    <a href="tracking-status.php">View Status</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="date" class="item-detail">
+                                <h5 class="title">Date</h5>
+                                <div class="content">
+                                    <span id="expiryDate">2023-10-23 11:30</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+    </div>
+<?php
+        require("server/donation_history.nc.php");
+        ?>
+    <div id="donation-history">
         <h2 class="title">Donation History</h2>
-        <table cellspacing="0">
+        <table id="example" class="table table-striped table-bordered" style="width:100%" cellspacing="0">
             <tr id="header">
                 <th class="center">Donation ID</th>
                 <!-- <th>Items</th> -->
@@ -21,380 +140,42 @@
                 <!-- <th class="center">Quantity</th> -->
                 <th>Date</th>
             </tr>
-            <tr id="no-records">
-                <td>No records yet!</td>
-            </tr>
-            <!-- DUMMY DATA -->
-            <tr class="odd">
-                <td class="donation-id" class="center">1000001</td>
-                <!-- <td>Pizza</td> -->
-                <td class="receiver-id">292</td>
-                <td class="status">Completed</td>
-                <!-- <td class="center">3</td> -->
-                <td>
-                    <span>2023-09-03 10:46</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="even">
-                <td class="donation-id" class="center">1000029</td>
-                <!-- <td>Cornflakes</td> -->
-                <td class="receiver-id">292</td>
-                <td class="status">Pending</td>
-                <!-- <td class="center">5</td> -->
-                <td>
-                    <span>2023-09-04 11:20</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="odd">
-                <td class="donation-id" class="center">1034029</td>
-                <!-- <td>Cornflakes</td> -->
-                <td class="receiver-id">NIL</td>
-                <td class="status">New</td>
-                <!-- <td class="center">5</td> -->
-                <td>
-                    <span>2023-10-24 13:20</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="even">
-                <td class="donation-id" class="center">1001241</td>
-                <!-- <td>Cornflakes</td> -->
-                <td class="receiver-id">292</td>
-                <td class="status">Cancelled</td>
-                <!-- <td class="center">5</td> -->
-                <td>
-                    <span>2023-09-04 11:20</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="odd">
-                <td class="donation-id" class="center">1000052</td>
-                <!-- <td>Milk</td> -->
-                <td class="receiver-id">480</td>
-                <td class="status">Pending</td>
-                <!-- <td class="center">10</td> -->
-                <td>
-                    <span>2023-09-09 00:46</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="even">
-                <td class="donation-id" class="center">1003297</td>
-                <!-- <td>Mayonnaise</td> -->
-                <td class="receiver-id">300</td>
-                <td class="status">Completed</td>
-                <!-- <td class="center">1</td> -->
-                <td>
-                    <span>2023-09-13 14:46</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="odd">
-                <td class="donation-id" class="center">1005431</td>
-                <!-- <td>Sugar</td> -->
-                <td class="receiver-id">132</td>
-                <td class="status">Pending</td>
-                <!-- <td class="center">30</td> -->
-                <td>
-                    <span>2023-09-14 11:01</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="even">
-                <td class="donation-id" class="center">1006103</td>
-                <!-- <td>Bread</td> -->
-                <td class="receiver-id">523</td>
-                <td class="status">Completed</td>
-                <!-- <td class="center">14</td> -->
-                <td>
-                    <span>2023-09-17 08:41</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="odd">
-                <td class="donation-id" class="center">1007651</td>
-                <!-- <td>Ice cream</td> -->
-                <td class="receiver-id">330</td>
-                <td class="status">Completed</td>
-                <!-- <td class="center">1</td> -->
-                <td>
-                    <span>2023-09-25 17:24</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="even">
-                <td class="donation-id" class="center">1020702</td>
-                <!-- <td>Bread</td> -->
-                <td class="receiver-id">720</td>
-                <td class="status">Pending</td>
-                <!-- <td class="center">7</td> -->
-                <td>
-                    <span>2023-09-30 07:51</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="odd">
-                <td class="donation-id" class="center">1332101</td>
-                <!-- <td>Egg</td> -->
-                <td class="receiver-id">NIL</td>
-                <td class="status">New</td>
-                <!-- <td class="center">2</td> -->
-                <td>
-                    <span>2023-11-03 13:44</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="even">
-                <td class="donation-id" class="center">1123290</td>
-                <!-- <td>Rice</td> -->
-                <td class="receiver-id">121</td>
-                <td class="status">Completed</td>
-                <!-- <td class="center">1</td> -->
-                <td>
-                    <span>2023-10-23 11:30</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="odd">
-                <td class="donation-id" class="center">1100001</td>
-                <!-- <td>Egg</td> -->
-                <td class="receiver-id">292</td>
-                <td class="status">Completed</td>
-                <!-- <td class="center">2</td> -->
-                <td>
-                    <span>2023-10-02 14:40</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="even">
-                <td class="donation-id" class="center">1016690</td>
-                <!-- <td>Rice</td> -->
-                <td class="receiver-id">NIL</td>
-                <td class="status">New</td>
-                <!-- <td class="center">1</td> -->
-                <td>
-                    <span>2021-11-11 01:13</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-
             
-            <!-- DUMMY DATA 2 -->
-            <tr class="odd">
-                <td class="donation-id" class="center">1000001</td>
-                <!-- <td>Pizza</td> -->
-                <td class="receiver-id">292</td>
-                <td class="status">Completed</td>
-                <!-- <td class="center">3</td> -->
-                <td>
-                    <span>2023-09-03 10:46</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="even">
-                <td class="donation-id" class="center">1000029</td>
-                <!-- <td>Cornflakes</td> -->
-                <td class="receiver-id">292</td>
-                <td class="status">Pending</td>
-                <!-- <td class="center">5</td> -->
-                <td>
-                    <span>2023-09-04 11:20</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="odd">
-                <td class="donation-id" class="center">1005139</td>
-                <!-- <td>Cornflakes</td> -->
-                <td class="receiver-id">NIL</td>
-                <td class="status">New</td>
-                <!-- <td class="center">5</td> -->
-                <td>
-                    <span>2022-20-02 00:13</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="even">
-                <td class="donation-id" class="center">1100132</td>
-                <!-- <td>Cornflakes</td> -->
-                <td class="receiver-id">292</td>
-                <td class="status">Cancelled</td>
-                <!-- <td class="center">5</td> -->
-                <td>
-                    <span>2022-04-01 13:15</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="odd">
-                <td class="donation-id" class="center">1000052</td>
-                <!-- <td>Milk</td> -->
-                <td class="receiver-id">480</td>
-                <td class="status">Pending</td>
-                <!-- <td class="center">10</td> -->
-                <td>
-                    <span>2023-09-09 00:46</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="even">
-                <td class="donation-id" class="center">1003297</td>
-                <!-- <td>Mayonnaise</td> -->
-                <td class="receiver-id">300</td>
-                <td class="status">Completed</td>
-                <!-- <td class="center">1</td> -->
-                <td>
-                    <span>2023-09-13 14:46</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="odd">
-                <td class="donation-id" class="center">1005431</td>
-                <!-- <td>Sugar</td> -->
-                <td class="receiver-id">132</td>
-                <td class="status">Pending</td>
-                <!-- <td class="center">30</td> -->
-                <td>
-                    <span>2023-09-14 11:01</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="even">
-                <td class="donation-id" class="center">1006103</td>
-                <!-- <td>Bread</td> -->
-                <td class="receiver-id">523</td>
-                <td class="status">Completed</td>
-                <!-- <td class="center">14</td> -->
-                <td>
-                    <span>2023-09-17 08:41</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="odd">
-                <td class="donation-id" class="center">1007651</td>
-                <!-- <td>Ice cream</td> -->
-                <td class="receiver-id">330</td>
-                <td class="status">Completed</td>
-                <!-- <td class="center">1</td> -->
-                <td>
-                    <span>2023-09-25 17:24</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="even">
-                <td class="donation-id" class="center">1020702</td>
-                <!-- <td>Bread</td> -->
-                <td class="receiver-id">720</td>
-                <td class="status">Pending</td>
-                <!-- <td class="center">7</td> -->
-                <td>
-                    <span>2023-09-30 07:51</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="odd">
-                <td class="donation-id" class="center">1002201</td>
-                <!-- <td>Egg</td> -->
-                <td class="receiver-id">NIL</td>
-                <td class="status">New</td>
-                <!-- <td class="center">2</td> -->
-                <td>
-                    <span>2023-01-13 23:45</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="even">
-                <td class="donation-id" class="center">1123290</td>
-                <!-- <td>Rice</td> -->
-                <td class="receiver-id">121</td>
-                <td class="status">Completed</td>
-                <!-- <td class="center">1</td> -->
-                <td>
-                    <span>2023-10-23 11:30</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="odd">
-                <td class="donation-id" class="center">1100001</td>
-                <!-- <td>Egg</td> -->
-                <td class="receiver-id">292</td>
-                <td class="status">Completed</td>
-                <!-- <td class="center">2</td> -->
-                <td>
-                    <span>2023-10-02 14:40</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="even">
-                <td class="donation-id" class="center">1023790</td>
-                <!-- <td>Rice</td> -->
-                <td class="receiver-id">NIL</td>
-                <td class="status">New</td>
-                <!-- <td class="center">1</td> -->
-                <td>
-                    <span>2022-07-31 01:13</span>
-                    <div class="view-detail">
-                        <button>View Detail</button>
-                    </div>
-                </td>
-            </tr>
+        <?php
+            for($i=0;$i<count($donationId);$i++)
+            {
+                echo "<tr class='odd'>";
+                echo "<td class='donation-id' class='center'>$donationId[$i]</td>";
+                echo "<td class='receiver-id'>$receiver[$i]</td>";
+                echo "<td class='status'>$status[$i]</td>";
+                echo "<td>";
+                echo "<span>$date[$i]</span>";
+                echo "<div class='view-detail'>";
+                echo "<button onclick=\"openDetails('$donationId[$i]', '$receiver[$i]', '$food[$i]', '$expiryDate[$i]', '$status[$i]');\">View Detail</button>";
+                echo "</div>";
+                echo "</td>";
+                echo " </tr>";
+            }        
+        ?>
         </table>
     </div>
 </body>
-<script src="../js/history.js"></script>
-<script src="js/donation-history.js"></script>
+<script>
+    function openDetails(donId, rec, food, expirydate, status)
+    {
+        document.getElementById("donation-history").style.display="none";
+        document.getElementById("donation-detail").style.display="initial";
+        document.getElementById("donor-id").innerHTML = donId;
+        document.getElementById("receiver-name").innerHTML = rec;
+        document.getElementById("foodName").innerHTML = food;
+        document.getElementById("expiryDate").innerHTML = expirydate;
+        document.getElementById("status-content").innerHTML =status
+    }
+        </script>
+<script src="DataTables/datatables.min.js"></script>
+<script src="../../js/back-arrow.js"></script>
+<script src="../js/history-detail.js"></script>
+<script src="js/donation-history-detail.js"></script>
+<!-- <script src="../js/history.js"></script>
+<script src="js/donation-history.js"></script> -->
 </html>

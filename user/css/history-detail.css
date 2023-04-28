@@ -7,10 +7,97 @@ main {
     display: flex;
     flex-direction: column;
     align-content: space-between;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #FFF;
+    padding: 3vh;
+}
+
+div:not(.view-detail) {
     background-color: #FFF;
     margin: 7vh 3vw;
-    padding: 3vh 4vw 5vh;
+    padding: 5vh 4vw;
+    overflow: hidden;
 }
+
+table {
+    margin: 2vw 5vw;
+    text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+    /* background-color: #4aeef1; */
+}
+
+#header {
+    color: #FFF;
+    border-bottom: solid #000;
+}
+
+tr {
+    width: 100%;
+    transition: all .2s ease-in-out;
+}
+
+#no-records td {
+    color: red;
+    display: none;
+}
+
+#no-records.active td {
+    display: table-cell;
+}
+
+/* tr:not(#header):hover {
+    cursor: pointer;
+    box-shadow: 0px 2px 5px 0px #777;
+} */
+
+th {
+    color: var(--font-color);
+    z-index: 1;
+    font-weight: normal;
+    padding: 3vh 1vw;
+}
+
+td {
+    color: var(--font-color);
+    padding: 4vh 1vw;
+}
+
+td:last-of-type, td:nth-last-of-type(2) {
+    text-align: left !important;
+    /* padding-left: 7%; */
+}
+
+td:last-of-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 15%;
+}
+
+.view-detail {
+    width: 35%;
+}
+
+.view-detail button {
+    padding: 1vh 0;
+    height: 100%;
+    width: 100%;
+    font-size: .9rem;
+    letter-spacing: .02rem;
+    background-color: #3C59F4;
+    color: #FFF;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.view-detail button:hover {
+    background-color: #2740B1;
+}
+
 
 main > .top-info {
     position: relative;
@@ -19,8 +106,8 @@ main > .top-info {
 
 .top-info #back-arrow {
     position: absolute;
-    top: 50%;
-    left: 0;
+    top: 10%;
+    left: 15%;
     transform: translateY(-50%);
     font-size: 2rem;
     cursor: pointer;
@@ -30,15 +117,15 @@ main > .top-info {
     display: flex;
     align-items: center;
     justify-items: center;
-    margin-top: 10vh;
+    margin-top: 2vh;
     width: 100%;
     flex-grow: 1;
 }
 
 section#left-side {
     padding-right: 3%;
-    width: 40%;
-    height: 80%;
+    width: 50%;
+    height: 60%;
 }
 
 .info {

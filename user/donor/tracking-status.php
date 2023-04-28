@@ -62,15 +62,18 @@
             </div>
         </div> -->
         <div class="extra-information">
+            <form method="POST" action="server/proof.php">
             <span>Feedback Documentation</span>
             <div class="gallery">
                 <span id="no-documentation">Upload Photo Evidence of Successful Donation</span>
-                <input class="file-upload-input" type="file" accept="Image/*">
+                <input name="donationProof" class="file-upload-input" type="file" accept="Image/*" required>
+                <button name="upload" type="submit">Upload</button>
                 <!-- IMAGES TO BE SHOWN WHEN PROCESS IS COMPLETED SHOULD BE PLACED HERE. -->
                 <!-- <img src="../../resources/images/uploaded-images/1.jpg" alt="">
                 <img src="../../resources/images/uploaded-images/2.jpg" alt="">
                 <img src="../../resources/images/uploaded-images/3.jpg" alt=""> -->
             </div>
+    </form>
         </div>
         <div id="track-location">
             <a href="track-location.php">Track Location</a>

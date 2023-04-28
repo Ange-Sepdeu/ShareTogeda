@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../resources/fontawesome-free-6.3.0-web/css/all.min.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="css/make-donation.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <title>Make Donation</title>
 </head>
 <body>
@@ -53,12 +53,7 @@
                         <input onfocusout="validate(event);" type="datetime-local" id="donordatetime" name="donordatetime" placeholder="Enter the expiry date" />
                     </div>
                 </div>
-                <div id="food-entry2" class="entry">
-                    <label for="food-input2">Donation Proof</label>
-                    <div id="food-div2" class="input">
-                        <input onfocusout="validate(event);" accept="image/*" type="file" id="donationProof" name="donationProof" placeholder="Enter the expiry date" />
-                    </div>
-                </div>
+
                     <button type="submit" name="submit" id="add-button" style="display:none">
                         Donate
                     </button>
