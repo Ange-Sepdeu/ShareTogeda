@@ -7,60 +7,64 @@
     <link rel="stylesheet" href="../../resources/fontawesome-free-6.3.0-web/css/all.min.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="css/make-donation.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <title>Make Donation</title>
 </head>
 <body>
+<?php
+      session_start();
+    //   $name = $_SESSION["donorname"];
+    //   $email = $_SESSION["donoremail"];
+    //   $phone = $_SESSION["donortel"];
+
+      $name = "John Doe";
+      $email = "doe25@gmail.com";
+      $phone = "675512623";
+
+    //   if(empty($name))
+    //   {
+    //     header("Location: login")
+    //   }
+    ?>
     <main>
         <section id="left-side">
             <h2>Make Donation</h2>
-            <form action="" method="">
+            <form id="form" action="server/action_donation.php" enctype="multipart/form-data" method="POST">
+                <div id="error" style="color: tomato;"></div>
                 <div id="food-entry1" class="entry">
                     <label for="food-input1">Food Description</label>
-                    <div id="food-div1" class="input">
-                    <input type="text" name="quantity-input1" id="quanitity-input1" style= "height: 250px;">
-                        <!-- <select name="food-input1" id="food-input1">
-                            <option value="" disabled selected hidden>Input your food selection</option>
-                            <option value="food-1">Food 1</option>
-                            <option value="food-2">Food 2</option>
-                            <option value="food-3">Food 3</option> 
-                        </select> -->
-                        <!-- <i class="fa-solid fa-pizza-slice"></i> -->
-                    </div>
                 </div>
-               <!--  <div id="quantity-entry1" class="entry">
-                    <label for="quantity-input1">Quantity</label>
+                <div id="quantity-entry1" class="entry">
+                    <label for="quantity-input1">Name</label>
                     <div id="quantity-div1" class="input quantity">
-                        <input type="text" name="quantity-input1" id="quanitity-input1" placeholder="Quantity Amount">
-                        <i class="fa-solid fa-battery-three-quarters"></i>
-                    </div>
-                </div>
-                <div id="food-entry2" class="entry">
-                    <label for="food-input2">Food</label>
-                    <div id="food-div2" class="input">
-                        <select name="food-input2" id="food-input2">
-                            <option value="" disabled selected hidden>Input your food selection</option>
-                            <option value="food-1">Food 1</option>
-                            <option value="food-2">Food 2</option>
-                            <option value="food-3">Food 3</option>
-                        </select>
-                         <i class="fa-solid fa-pizza-slice"></i> 
+                        <input onfocusout="validate(event)" type="text" name="foodName" id="foodName" placeholder="Food Name" required>
+                        <i class="fa-solid fa-pizza-slice"></i>
                     </div>
                 </div>
                 <div id="quantity-entry2" class="entry">
                     <label for="quantity-input2">Quantity</label>
                     <div id="quantity-div2" class="input quantity">
-                        <input type="text" name="quantity-input2" id="quantity-input2" placeholder="Quantity Amount">
-                        <i class="fa-solid fa-battery-three-quarters"></i>
+                        <input type="text" name="quantity" onfocusout="validate(event)" id="quantity" min="1" placeholder="Quantity Amount" required>
                     </div>
-                </div> -->
-                <div id="btn">
-                    <button id="add-button">
-                        <span>DONE</span>
-                        <span class="tooltip-text">Make<span class="tooltip"> your donation</span></span>
-                    </button>
                 </div>
+                <div id="food-entry2" class="entry">
+                    <label for="food-input2">Expiry Date</label>
+                    <div id="food-div2" class="input">
+                        <input onfocusout="validate(event);" type="datetime-local" id="donordatetime" name="donordatetime" placeholder="Enter the expiry date" />
+                    </div>
+                </div>
+                <div id="food-entry2" class="entry">
+                    <label for="food-input2">Donation Proof</label>
+                    <div id="food-div2" class="input">
+                        <input onfocusout="validate(event);" accept="image/*" type="file" id="donationProof" name="donationProof" placeholder="Enter the expiry date" />
+                    </div>
+                </div>
+                    <button type="submit" name="submit" id="add-button" style="display:none">
+                        Donate
+                    </button>
             </form>
         </section>
+
         <section id="right-side">
             <div id="location">
                 <img src="../../resources/images/map.png" alt="Map">
@@ -70,4 +74,42 @@
         </section>
     </main>
 </body>
+<script>
+    function validate(e)
+    {
+        e.preventDefault()
+        var error = ""
+        var foodName = document.getElementById("foodName").value
+        var quantity = document.getElementById("quantity").value
+        var datetime = document.getElementById("donordatetime").value
+        if(e.srcElement.id==="foodName")
+     {
+         var regexName = /^([a-zA-Z]+)$/
+         if(!foodName.match(regexName))
+          error = "Invalid food name"
+          else
+          error = ""
+          document.getElementById("error").innerHTML = error
+    }
+    if(e.srcElement.id==="quantity")
+    {    
+    var regexQuantity = /^([0-9]+)$/
+    if(!quantity.match(regexQuantity))
+         error = "Invalid quantity"    
+         else
+          error = ""
+         document.getElementById("error").innerHTML = error
+    }    
+    if(e.srcElement.id==="donordatetime")
+    {
+    if(new Date(datetime) < new Date())
+         error = "Expiry date is less than current date"
+         else
+          error = ""     
+         document.getElementById("error").innerHTML = error
+    }
+    if(error==="" && (foodName!="" && quantity!="" && datetime!=""))
+     document.getElementById("add-button").style.display=""
+    }
+</script>
 </html>
