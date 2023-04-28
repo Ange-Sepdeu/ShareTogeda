@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../resources/fontawesome-free-6.3.0-web/css/all.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../css/form-style.css">
+    <link rel="stylesheet" href="../css/login-style.css">
+    <title>Login Panel For Receiver</title>
+</head>
+<body>
+    <main>
+        <h2>Login Panel For Receiver</h2>
+        <h3>Welcome Back!</h3>
+        <form id="login-form" action="index.html" method="">
+            <div class="entry">
+                <label for="email-address">Email Address</label>
+                <div id="email-input" class="input">
+                    <i class="fa-solid fa-envelopes-bulk"></i>
+                    <input type="email" name="email-address" id="email-address">
+                </div>
+            </div>
+            <div class="entry">
+                <label for="password">Password</label>
+                <div id="password-input" class="input">
+                    <i class="fa-solid fa-user-lock"></i>
+                    <input type="password" name="password" id="password">
+                    <i class="fa-solid fa-eye-slash dt" id="eye-icon"></i>
+                </div>
+            </div>
+            <a href="#" class="forgot-password">Forgot Password?</a>
+            <div class="entry" id="remember-me-input">
+                <input type="checkbox" name="remember-me" id="remember-me">
+                <label for="remember-me">Keep me signed in</label>
+            </div>
+            <input type="submit" value="LOGIN">
+            <a href="receiver-registration.html" class="signup">Don't have an account? Signup</a>
+        </form>
+    </main>
+    <span class="vertical-separator"></span>
+    <aside>
+        <div id="logo">
+            <a href="../../index.html"><img src="../../resources/images/logo-cropped.jpg" alt=""></a>
+        </div>
+    </aside>
+</body>
+<script src="../../js/password-hide-show.js"></script>
+</html>

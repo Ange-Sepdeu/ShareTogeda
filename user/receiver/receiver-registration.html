@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../resources/fontawesome-free-6.3.0-web/css/all.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../css/form-style.css">
+    <title>Registration For Receiver</title>
+</head>
+<body>
+    <main>
+        <h2>Registration For Receiver</h2>
+        <form id="registration-form" action="index.html" method="">
+            <div class="entry">
+                <label for="full-name">Full Name</label>
+                <div id="name-input" class="input">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" name="full-name" id="full-name">
+                </div>
+            </div>
+            <div class="entry">
+                <label for="address">Address</label>
+                <div id="address-input" class="input">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" name="address" id="address">
+                </div>
+            </div>
+            <div class="entry">
+                <label for="mobile-number">Mobile Number</label>
+                <div id="number-input" class="input">
+                    <i class="fa-solid fa-square-phone"></i>
+                    <input type="tel" name="mobile-number" id="mobile-number">
+                </div>
+            </div>
+            <div class="entry">
+                <label for="email-address">Email Address</label>
+                <div id="email-input" class="input">
+                    <i class="fa-solid fa-envelopes-bulk"></i>
+                    <input type="email" name="email-address" id="email-address">
+                </div>
+            </div>
+            <div class="entry">
+                <label for="password">Password</label>
+                <div id="password-input" class="input">
+                    <i class="fa-solid fa-user-lock"></i>
+                    <input type="password" name="password" id="password">
+                    <i class="fa-solid fa-eye-slash dt" id="eye-icon"></i>
+                </div>
+            </div>
+            <input type="submit" value="Sign Up">
+            <a href="receiver-login.html" class="login">Already have an account? Login</a>
+        </form>
+    </main>
+    <span class="vertical-separator"></span>
+    <aside>
+        <div id="logo">
+            <a href="../../index.html"><img src="../../resources/images/logo-cropped.jpg" alt=""></a>
+        </div>
+    </aside>
+</body>
+<script src="../../js/password-hide-show.js"></script>
+</html>
