@@ -1,3 +1,8 @@
+<?php
+session_start();
+$name = explode(" ", $_SESSION["fullname"]);
+$name = $name[0];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,14 +21,16 @@
             <div id="container">
                 <span class="child">
                     <span id="step-one">Hi&#32;</span>
-                    <span id="step-two">donor,&#32;</span>
+                    <span id="step-two" style="text-transform: capitalize"><?= $name; ?>,&#32;</span>
                     <span id="step-three">welcome&#32;</span>
                     <span id="step-four">back</span>
                 </span>
                 <span id="step-five">.</span>
 
             </div>
-            <span id="phrase">Hi donor, welcome back.</span>
+            <span id="phrase">Hi 
+            <span style="text-transform: capitalize"><?= $name; ?>,&#32;</span> 
+                welcome back.</span>
         </h2>
         <div id="info-container">
             <div class="info" id="new">

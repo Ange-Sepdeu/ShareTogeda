@@ -27,6 +27,8 @@ async function savePosition(position) {
     if(res.statusText.toLowerCase() === 'ok'){
         alert('Location saved successfully !!!')
         sessionStorage.setItem('location','already collected info')
+        sessionStorage.setItem("longitude", position.coords.longitude)
+        sessionStorage.setItem("latitude", position.coords.latitude)
     }
   })
   .then(data => {

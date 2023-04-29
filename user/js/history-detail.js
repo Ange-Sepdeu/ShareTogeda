@@ -37,5 +37,5 @@ if(statusContent.innerHTML === "New") {
 const trackDonation = document.querySelector("#status a");
 trackDonation.onclick = (e) => {
     e.preventDefault();
-    window.location.assign("tracking-status.html?status=" + donationStatus);
+    window.location.assign("tracking-status.php?status=" + donationStatus);
 }

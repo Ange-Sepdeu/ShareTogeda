@@ -13,13 +13,9 @@
 <body>
 <?php
       session_start();
-    //   $name = $_SESSION["donorname"];
+       $name = $_SESSION["fullname"];
     //   $email = $_SESSION["donoremail"];
     //   $phone = $_SESSION["donortel"];
-
-      $name = "John Doe";
-      $email = "doe25@gmail.com";
-      $phone = "675512623";
 
     //   if(empty($name))
     //   {
@@ -61,14 +57,36 @@
         </section>
 
         <section id="right-side">
-            <div id="location">
-                <img src="../../resources/images/map.png" alt="Map">
+            <div id="googleMap" style="width:100%;height:400px;">
+                
             </div>
-            <p id="address-line-1" class="address"><span>Drop Off Location:</span> No 2 Chinwona Street</p>
-            <p id="address-line-2" class="address">Rumuodumaya, Port Harcourt</p>
+            <p id="address-line-1" class="address"></p>
         </section>
     </main>
 </body>
+
+<script>
+    window.onload = () => {
+        document.getElementById("address-line-1").innerHTML = `<b>Longitude: </b>${sessionStorage.getItem("longitude")} <b>Latitude: </b>${sessionStorage.getItem("latitude")}`
+    }
+function myMap() {
+    var latitude =sessionStorage.getItem("latitude")
+    var longitude =sessionStorage.getItem("longitude")
+    var marker = new google.maps.Marker({
+    position: {latitude, longitude},
+    animation:google.maps.Animation.BOUNCE
+});
+    var mapProp= {
+  center:new google.maps.LatLng(latitude? latitude : -20.2667, longitude? longitude : 57.3667),
+  zoom:7,
+};
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+marker.setMap(map);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD972QQNhdx7-VQS75dl1pLnZyfSOrnyMY&callback=myMap"></script>
+
 <script>
     function validate(e)
     {

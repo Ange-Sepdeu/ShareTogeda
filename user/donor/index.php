@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,10 +15,21 @@
 </head>
 <body>
     <section id="left-pane">
-        <div id="user">
-            <!-- <img src="../../resources/images/logo-cropped.jpg" alt=""> -->
-            <i class="fa-solid fa-circle-user"></i>
-            <span>Donor: John Doe</span>
+        <div id="user" >
+          <div style="background-color: hsl(258.13deg 47.52% 60.39%); border-radius: 50%; width: 120px; height:120px; display: flex;
+           align-items: center; justify-content: center;
+          ">
+          <span style="text-align: center; font-size:50px; text-transform: uppercase"><b>
+            <?php
+            echo $_SESSION["fullname"][0];
+            ?>
+          </b></span>
+        </div>    
+        <span>
+            Donor: 
+            <?php
+            echo $_SESSION["fullname"];
+            ?></span>
         </div>
         <div id="features">
             <a href="dashboard.php" class="feature active">Dashboard</a>
