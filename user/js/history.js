@@ -14,7 +14,7 @@ buttons.forEach((button) => {
         })
         
         if(document.title === "Donation History")
-            window.location.assign("donation-history-detail.html?id=" + donationId.innerHTML + "&receiverId=" + receiverId.innerHTML + "&status=" + donationStatus.innerHTML);
+            window.location.assign("donation-history-detail.php?id=" + donationId.innerHTML + "&receiverId=" + receiverId.innerHTML + "&status=" + donationStatus.innerHTML);
         else if (document.title === "Receipt History")
             window.location.assign("receipt-history-detail.html?id=" + donationId.innerHTML + "&receiverId=" + receiverId.innerHTML + "&status=" + donationStatus.innerHTML);
     }

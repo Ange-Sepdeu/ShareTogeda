@@ -40,6 +40,7 @@ class Switch {
         handleAddresses("donor");
         handleEmails("donor");
         handleNames("donor");
+        
 
         let totalDonors = Array.from(document.querySelectorAll("#donors #donor-table table tr:not(#header)"));
         totalDonors.forEach(row => {
